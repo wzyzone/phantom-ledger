@@ -25,7 +25,7 @@ export default function HomeExperience() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-copy">
           <p className="eyebrow"><i /> CASE FILE 001 · IOS</p>
-          <h1><span className="hero-zh">怪盗</span><span className="hero-en">PHANTOM</span><span className="hero-ledger"><em>手</em>账</span></h1>
+          <h1><span className="hero-zh">怪盗</span><span className="hero-en">PHANTOM</span><span className="hero-ledger"><em>手</em><b>账</b></span></h1>
           <div className="hero-statement">
             <p className="lang-zh">把每一笔，<br />变成行动档案。</p>
             <p className="lang-en">TURN EVERY ENTRY<br />INTO A CASE FILE.</p>
@@ -41,13 +41,28 @@ export default function HomeExperience() {
           <div className="red-sun" aria-hidden="true"><span>¥</span></div>
           <div className="paper-slice slice-one" aria-hidden="true">TOP SECRET</div>
           <div className="paper-slice slice-two" aria-hidden="true">NO. 2026-001</div>
-          <div className="phone-frame"><div className="phone-camera" /><Image src="/app-shots/logs.png" width={1206} height={2622} alt="怪盗手账行动档案批量管理界面" priority /></div>
+          <div className="phone-frame"><div className="phone-camera" /><Image src="/app-shots/quick.png" width={1206} height={2622} alt="怪盗手账快捷记账机械滚轮界面" priority /></div>
           <Image className="hero-icon" src="/app-icon.png" width={1024} height={1024} alt="怪盗手账 App 图标" priority />
           <div className="hero-stamp" aria-hidden="true">LOCAL<br />ONLY</div>
         </div>
         <div className="hero-ticker" aria-hidden="true">
           <div>RECORD / ANALYZE / PLAN / BACKUP / RECORD / ANALYZE / PLAN / BACKUP /&nbsp;</div>
           <div>RECORD / ANALYZE / PLAN / BACKUP / RECORD / ANALYZE / PLAN / BACKUP /&nbsp;</div>
+        </div>
+      </section>
+
+      <section className="quick-showcase section-shell">
+        <div className="quick-copy">
+          <p className="eyebrow"><i /> QUICK STRIKE / 快捷记账</p>
+          <h2><span className="lang-zh">把记账，<br />变成一次<em>出击。</em></span><span className="lang-en">TURN AN ENTRY<br />INTO A <em>STRIKE.</em></span></h2>
+          <p><span className="lang-zh">从屏幕边缘划入，拨动巨型机械滚轮，再锁定目标分类。它既是快捷入口，也是怪盗手账最完整的一次视觉表演。</span><span className="lang-en">Swipe in from the screen edge, roll the oversized mechanical dial, then lock onto a category. It is a shortcut and Phantom Ledger&apos;s boldest visual performance.</span></p>
+          <div className="quick-facts"><span>EDGE SWIPE</span><span>ONE-HAND</span><span>0.1 DETENT</span></div>
+        </div>
+        <div className="quick-art">
+          <div className="quick-orbit" aria-hidden="true"><i /><i /><i /></div>
+          <div className="quick-phone"><Image src="/app-shots/quick.png" width={1206} height={2622} alt="快捷记账的巨型滚轮、金额和分类界面" /></div>
+          <span className="quick-label" aria-hidden="true">TOUCH<br />&amp; ROLL</span>
+          <span className="quick-seal" aria-hidden="true">01</span>
         </div>
       </section>
 
