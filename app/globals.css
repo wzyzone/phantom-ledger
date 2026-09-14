@@ -81,8 +81,10 @@ html[data-language="en"] .lang-en { display: revert !important; }
 .slice-one { top: 20%; right: -2%; transform: rotate(-8deg); }
 .slice-two { left: 0; bottom: 19%; font-size: 14px; transform: rotate(5deg); }
 .hero-stamp { position: absolute; z-index: 8; right: 7%; top: 61%; padding: 9px 17px; color: #000; border: 6px double #000; font: 400 21px/.87 var(--font-display); text-align: center; transform: rotate(-12deg); }
-.hero-ticker { position: absolute; z-index: 20; right: 0; bottom: 0; left: 0; display: flex; width: max-content; color: #fff; border-block: 3px solid #000; background: #000; font: 400 31px/1.35 var(--font-display); letter-spacing: .025em; animation: ticker 22s linear infinite; }
-@keyframes ticker { to { transform: translateX(-50%); } }
+.hero-ticker { position: absolute; z-index: 20; right: 0; bottom: 0; left: 0; width: 100%; overflow: hidden; color: #fff; border-block: 3px solid #000; background: #000; font: 400 31px/1.35 var(--font-display); letter-spacing: .025em; }
+.hero-ticker-track { display: flex; width: max-content; animation: ticker 22s linear infinite; }
+.hero-ticker-track span { flex: 0 0 auto; white-space: nowrap; }
+@keyframes ticker { to { transform: translate3d(-50%,0,0); } }
 
 .evidence-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); color: #fff; border-block: 4px solid #fff; background: #090909; }
 .evidence-strip > div { position: relative; display: flex; min-height: clamp(170px,15vw,230px); flex-direction: column; justify-content: space-between; gap: 24px; padding: clamp(28px,3.4vw,54px) clamp(20px,2.8vw,46px); overflow: hidden; border-right: 2px solid rgba(255,255,255,.45); }
@@ -315,5 +317,5 @@ html[data-language="en"] .lang-en { display: revert !important; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .hero-ticker { transform: none; }
+  .hero-ticker-track { transform: none; }
 }

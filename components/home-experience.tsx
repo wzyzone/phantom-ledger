@@ -108,13 +108,9 @@ export default function HomeExperience() {
           </div>
         </div>
         <div className="hero-ticker" aria-hidden="true">
-          <div>
-            RECORD / ANALYZE / PLAN / BACKUP / RECORD / ANALYZE / PLAN / BACKUP
-            /&nbsp;
-          </div>
-          <div>
-            RECORD / ANALYZE / PLAN / BACKUP / RECORD / ANALYZE / PLAN / BACKUP
-            /&nbsp;
+          <div className="hero-ticker-track">
+            <span>RECORD / ANALYZE / PLAN / BACKUP / RECORD / ANALYZE / PLAN / BACKUP /&nbsp;</span>
+            <span>RECORD / ANALYZE / PLAN / BACKUP / RECORD / ANALYZE / PLAN / BACKUP /&nbsp;</span>
           </div>
         </div>
       </section>
