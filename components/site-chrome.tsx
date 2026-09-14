@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 const APP_STORE_URL = '';
@@ -10,6 +11,14 @@ function applyLanguage(next: 'zh' | 'en') {
   document.documentElement.dataset.language = next;
   document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en';
   window.localStorage.setItem('phantom-site-language', next);
+  const path = window.location.pathname;
+  document.title = path.startsWith('/privacy')
+    ? next === 'zh' ? '怪盗手账｜隐私政策' : 'Phantom Ledger | Privacy Policy'
+    : path.startsWith('/support')
+      ? next === 'zh' ? '怪盗手账｜支持与联系' : 'Phantom Ledger | Support'
+      : next === 'zh' ? '怪盗手账｜把每一笔，变成行动档案' : 'Phantom Ledger | Turn Every Entry Into a Case File';
+  document.querySelector('.brand')?.setAttribute('aria-label', next === 'zh' ? '怪盗手账首页' : 'Phantom Ledger home');
+  document.querySelector('.site-header nav')?.setAttribute('aria-label', next === 'zh' ? '主要导航' : 'Main navigation');
   document.querySelectorAll<HTMLButtonElement>('[data-language-button]').forEach((button) => {
     const active = button.dataset.languageButton === next;
     button.classList.toggle('active', active);
@@ -18,6 +27,8 @@ function applyLanguage(next: 'zh' | 'en') {
 }
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   useEffect(() => {
     const stored = window.localStorage.getItem('phantom-site-language');
     const preferred = stored === 'en' || stored === 'zh'
@@ -26,7 +37,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
         ? 'zh'
         : 'en';
     applyLanguage(preferred);
-  }, []);
+  }, [pathname]);
 
   return (
     <>
@@ -59,7 +70,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
           <Link href="/privacy"><span className="lang-zh">隐私政策</span><span className="lang-en">Privacy</span></Link>
           <Link href="/support"><span className="lang-zh">支持</span><span className="lang-en">Support</span></Link>
           <a href="mailto:wzyzone@outlook.com">wzyzone@outlook.com</a>
-          <a href="https://wzyzone.github.io/" rel="noreferrer">ZONE WORKS ↗</a>
+          <a href="https://wzyzone.github.io/" target="_blank" rel="noreferrer">ZONE WORKS ↗</a>
         </div>
         <p className="footer-year">© 2026</p>
       </footer>

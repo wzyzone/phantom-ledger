@@ -33,7 +33,7 @@ export default function HomeExperience() {
           </div>
           <div className="hero-cta-row">
             <span className="primary-cta"><b className="lang-zh">APP STORE 即将上线</b><b className="lang-en">COMING SOON TO APP STORE</b><i>↗</i></span>
-            <a className="text-link" href="#intel"><span className="lang-zh">查看真实界面</span><span className="lang-en">SEE THE REAL APP</span> ↓</a>
+            <a className="text-link" href="#interface"><span className="lang-zh">查看真实界面</span><span className="lang-en">SEE THE REAL APP</span> ↓</a>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function HomeExperience() {
         </div>
       </section>
 
-      <section className="proof section-shell">
+      <section className="proof section-shell" id="interface">
         <header className="proof-head"><div className="section-index">002 / REAL INTERFACE</div><h2><span className="lang-zh">不是概念图。<br /><em>就是你会用到的界面。</em></span><span className="lang-en">NOT A CONCEPT.<br /><em>THE REAL APP.</em></span></h2></header>
         <div className="shot-deck">
           <figure className="shot shot-logs"><span>ARCHIVE</span><Image src="/app-shots/logs.png" width={1206} height={2622} alt="行动档案与批量管理界面" /><figcaption><b>LOGS</b><small className="lang-zh">查找、编辑、批量整理</small><small className="lang-en">SEARCH, EDIT, ORGANIZE</small></figcaption></figure>
