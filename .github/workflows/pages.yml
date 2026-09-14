@@ -1,0 +1,56 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build static site
+        run: npm run build
+        env:
+          GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_SITE_BASE_PATH: '/phantom-ledger'
+      - name: Prepare clean page URLs
+        run: |
+          mkdir -p dist/pages/privacy dist/pages/support
+          cp dist/client/index.html dist/client/404.html dist/pages/
+          cp dist/client/privacy.html dist/pages/privacy/index.html
+          cp dist/client/support.html dist/pages/support/index.html
+          cp dist/client/privacy.rsc dist/client/support.rsc dist/client/index.rsc dist/pages/
+          cp dist/client/app-icon.png dist/client/favicon.svg dist/pages/
+          cp -R dist/client/app-shots dist/pages/app-shots
+          cp -R dist/client/phantom-ledger/_next dist/pages/_next
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/pages
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
